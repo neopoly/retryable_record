@@ -20,6 +20,7 @@ Retries an operation on an ActiveRecord until no StaleObjectError is being raise
 == TODO
 
 * Better example in README
+* Intergration test with ActiveRecord
 
 == Note on Patches/Pull Requests
  

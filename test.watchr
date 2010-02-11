@@ -11,5 +11,5 @@ end
 run_tests
  
 watch('test/.*_test\.rb')   { |md| run md[0] }
-watch('lib/(.*)\.rb')       { |md| run "test/test_#{underscore(md[1])}.rb" }
+watch('lib/(.*)\.rb')       { |md| run "test/#{underscore(md[1])}_test.rb" }
 watch('test/teststrap.rb')  { run_tests }
