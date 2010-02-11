@@ -21,6 +21,13 @@ Metrics[http://getcaliper.com/caliper/project?repo=http%3A%2F%2Fgemcutter.org%2F
     user.save!
   end
 
+== Credits
+
+Inspired by
+* http://vision-media.ca/resources/ruby/better-ruby-retryable-method
+* http://blog.codefront.net/2008/01/14/retrying-code-blocks-in-ruby-on-exceptions-whatever/
+* http://github.com/carlo/retryable
+
 == TODO
 
 * Better example in README
