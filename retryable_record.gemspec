@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/retryable_record.rb",
+     "retryable_record.gemspec",
      "test.watchr",
      "test/retryable_record_test.rb",
      "test/teststrap.rb"
