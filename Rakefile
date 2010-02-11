@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/splattael/retryable_record"
     gem.authors = ["Peter Suschlik"]
 
-    gem.add_development_dependency "riot", ">= 0.11.12"
+    gem.add_development_dependency "riot", ">= 0.10.11"
     gem.add_development_dependency "riot_notifier"
     gem.add_development_dependency "yard"
 

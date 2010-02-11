@@ -1,6 +1,25 @@
 = retryable_record
 
-Description goes here.
+Retries an operation on an ActiveRecord until no StaleObjectError is being raised.
+
+== Usage
+
+  require 'retryable_record'
+
+  class User < ActiveRecord::Base
+    include RetryableRecord
+  end
+
+  user = User.first
+
+  user.retryable do
+    user.username = "foo"
+    user.save!
+  end
+
+== TODO
+
+* Better example in README
 
 == Note on Patches/Pull Requests
  
