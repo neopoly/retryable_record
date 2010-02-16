@@ -6,6 +6,7 @@ Source[http://github.com/splattael/retryable_record] |
 RDoc[http://rdoc.info/projects/splattael/retryable_record] |
 Metrics[http://getcaliper.com/caliper/project?repo=http%3A%2F%2Fgemcutter.org%2Fgems%2Fretryable_record]
 
+
 == Usage
 
   require 'retryable_record'
