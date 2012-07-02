@@ -1,47 +1,44 @@
-require 'teststrap'
+require 'helper'
 
-context "FakeRecord" do
+class RetryableRecordTest < Spec
+  let(:retries) { 0 }
+  let(:record) { FakeRecord.new(retries) }
+
   setup do
-    FakeRecord.new
+    record.retryable do
+      record.concurrent_modification!
+      record.save!
+    end
   end
 
-  asserts("that block return value") do
-    topic.retryable { :return_value }
-  end.equals(:return_value)
+  context :retryable do
+    context "without retry" do
+      let(:retries) { 0 }
 
-  asserts("that other errors") do
-    topic.retryable do
-      raise "other error"
-    end
-  end.raises(RuntimeError, "other error")
-
-  context "saves without retries" do
-    hookup do
-      topic.retryable do
-        topic.save
+      test "saves and does not retry" do
+        assert_equal 0, record.counter[:reload]
+        assert_equal 1, record.counter[:save]
       end
     end
 
-    asserts("save counter") { topic.counter[:save] }.equals(1)
-    asserts("reload counter") { topic.counter[:reload] }.equals(0)
-  end
+    context "with retry once" do
+      let(:retries) { 5 }
 
-  context "saves with 1 retry" do
-    hookup do
-      topic.retryable do
-        i = 0
-        topic.retryable do
-          if i == 0
-            i += 1
-            topic.concurrent_modification!
-          end
+      test "saves and reloads 5 times" do
+        assert_equal 5, record.counter[:reload]
+        assert_equal 1, record.counter[:save]
+      end
+    end
 
-          topic.save
+    test "does not rescue other errors" do
+      assert_raises RuntimeError do
+        record.retryable do
+          raise "foo"
         end
       end
-    end
 
-    asserts("save counter") { topic.counter[:save] }.equals(1)
-    asserts("reload counter") { topic.counter[:reload] }.equals(1)
+      assert_equal 0, record.counter[:reload]
+      assert_equal 1, record.counter[:save]
+    end
   end
 end

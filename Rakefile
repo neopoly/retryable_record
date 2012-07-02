@@ -1,27 +1,10 @@
-require 'rubygems'
-require 'rake'
+#!/usr/bin/env rake
+require "bundler/gem_tasks"
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "retryable_record"
-    gem.summary = %Q{Retries an operation on an ActiveRecord until no StaleObjectError is being raised.}
-# TODO    gem.description = %Q{}
-    gem.email = "peter@suschlik.de"
-    gem.homepage = "http://github.com/splattael/retryable_record"
-    gem.authors = ["Peter Suschlik"]
+desc 'Default: run unit tests.'
+task :default => :test
 
-    gem.add_development_dependency "riot", ">= 0.10.11"
-    gem.add_development_dependency "riot_notifier"
-    gem.add_development_dependency "yard"
-
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
+# Test
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
@@ -29,28 +12,12 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-begin
-  require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/*_test.rb'
-    test.verbose = true
-  end
-rescue LoadError
-  task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
-  end
-end
-
-task :test => :check_dependencies
-
-task :default => :test
-
-begin
-  require 'yard'
-  YARD::Rake::YardocTask.new
-rescue LoadError
-  task :yardoc do
-    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
-  end
+# RDoc
+require 'rdoc/task'
+RDoc::Task.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title    = 'retryable_record'
+  rdoc.options << '--line-numbers'
+  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end

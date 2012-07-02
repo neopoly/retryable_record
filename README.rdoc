@@ -2,9 +2,10 @@
 
 Retries an operation on an ActiveRecord until no StaleObjectError is being raised.
 
-Source[http://github.com/splattael/retryable_record] |
-RDoc[http://rdoc.info/projects/splattael/retryable_record] |
-Metrics[http://getcaliper.com/caliper/project?repo=http%3A%2F%2Fgemcutter.org%2Fgems%2Fretryable_record]
+Gem[https://rubygems.org/gems/retryable_record]
+Source[http://github.com/neopoly/retryable_record] |
+RDoc[http://rdoc.info/projects/neopoly/retryable_record] |
+{<img src="https://secure.travis-ci.org/neopoly/retryable_record.png?branch=master" alt="Build Status" />}[http://travis-ci.org/neopoly/retryable_record]
 
 
 == Usage
