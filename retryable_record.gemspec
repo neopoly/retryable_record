@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = RetryableRecord::VERSION
 
+  gem.add_runtime_dependency 'activerecord', '>= 3'
+
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'minitest', '~> 3.2.0'
 end
