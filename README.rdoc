@@ -2,7 +2,7 @@
 
 Retries an operation on an ActiveRecord until no StaleObjectError is being raised.
 
-Gem[https://rubygems.org/gems/retryable_record]
+Gem[https://rubygems.org/gems/retryable_record] |
 Source[http://github.com/neopoly/retryable_record] |
 RDoc[http://rdoc.info/projects/neopoly/retryable_record] |
 {<img src="https://secure.travis-ci.org/neopoly/retryable_record.png?branch=master" alt="Build Status" />}[http://travis-ci.org/neopoly/retryable_record]
@@ -44,7 +44,3 @@ Inspired by
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
-
-== Copyright
-
-Copyright (c) 2010 Peter Suschlik. See LICENSE for details.
