@@ -23,6 +23,22 @@ RDoc[http://rdoc.info/projects/neopoly/retryable_record] |
     user.save!
   end
 
+== Optimistic locking (lock_version column)
+
+ActiveRecord migration needs to support optimistic locking. See http://api.rubyonrails.org/classes/ActiveRecord/Locking/Optimistic.html
+
+  class CreateUsers < ActiveRecord::Migration
+    def change
+      create_table :users do |t|
+        t.string :name
+        t.integer :lock_version
+
+        t.timestamps
+      end
+    end
+  end
+
+
 == Credits
 
 Inspired by
