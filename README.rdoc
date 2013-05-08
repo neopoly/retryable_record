@@ -2,10 +2,11 @@
 
 Retries an operation on an ActiveRecord until no StaleObjectError is being raised.
 
+{<img src="https://secure.travis-ci.org/neopoly/retryable_record.png?branch=master" alt="Build Status" />}[http://travis-ci.org/neopoly/retryable_record] {<img src="https://badge.fury.io/rb/retryable_record.png" alt="Gem Version" />}[http://badge.fury.io/rb/retryable_record] {<img src="https://codeclimate.com/github/neopoly/retryable_record.png" />}[https://codeclimate.com/github/neopoly/retryable_record]
+
 Gem[https://rubygems.org/gems/retryable_record] |
 Source[http://github.com/neopoly/retryable_record] |
 RDoc[http://rdoc.info/projects/neopoly/retryable_record] |
-{<img src="https://secure.travis-ci.org/neopoly/retryable_record.png?branch=master" alt="Build Status" />}[http://travis-ci.org/neopoly/retryable_record]
 
 
 == Usage
