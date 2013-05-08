@@ -3,7 +3,7 @@ require 'active_record/base'
 
 # Retries an operation on an ActiveRecord until no StaleObjectError is being raised.
 #
-# @example
+# == Example
 #
 #   class User < ActiveRecord::Base
 #     include RetryableRecord
@@ -16,12 +16,26 @@ require 'active_record/base'
 #     user.save!
 #   end
 #
-# @yield Operation that should be retried on failure ActiveRecord::StaleObjectError.
 module RetryableRecord
-  def retryable(&block)
+  # Retryable operations on an ActiveRecord +record+.
+  #
+  # == Example
+  #
+  #   RetryableRecord.retry(user) do
+  #     user.username = "foo"
+  #     user.save!
+  #   end
+  #
+  def retry(record)
     yield
   rescue ActiveRecord::StaleObjectError
-    reload
+    record.reload
     retry
+  end
+  module_function :retry
+
+  # Retries operations on an ActiveRecord.
+  def retryable(&block)
+    RetryableRecord.retry(self, &block)
   end
 end

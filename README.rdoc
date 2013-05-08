@@ -11,6 +11,28 @@ Documentation[http://rdoc.info/projects/neopoly/retryable_record]
 
 == Usage
 
+You can use +retryable_record+ in 3 different ways:
+
+=== Module function
+
+  require 'retryable_record'
+
+  RetryableRecord.retry(user) do
+    user.username = "foo"
+    user.save!
+  end
+
+=== Kernel import
+
+  require 'retryable_record/import'
+
+  RetryableRecord(user) do
+    user.username = "foo"
+    user.save!
+  end
+
+=== Module inclusion
+
   require 'retryable_record'
 
   class User < ActiveRecord::Base
@@ -43,9 +65,9 @@ ActiveRecord migration needs to support optimistic locking. See http://api.rubyo
 == Credits
 
 Inspired by
-* http://vision-media.ca/resources/ruby/better-ruby-retryable-method
 * http://blog.codefront.net/2008/01/14/retrying-code-blocks-in-ruby-on-exceptions-whatever/
-* http://github.com/carlo/retryable
+* http://github.com/nfedyashev/retryable
+* http://vision-media.ca/resources/ruby/better-ruby-retryable-method (broken)
 
 == TODO
 
