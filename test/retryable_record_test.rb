@@ -4,33 +4,33 @@ class RetryableRecordTest < Spec
   let(:retries) { 0 }
   let(:record) { FakeRecord.new(retries) }
 
-  setup do
+  before do
     record.retryable do
       record.concurrent_modification!
       record.save!
     end
   end
 
-  context :retryable do
-    context "without retry" do
+  describe :retryable do
+    describe "without retry" do
       let(:retries) { 0 }
 
-      test "saves and does not retry" do
+      it "saves and does not retry" do
         assert_equal 0, record.counter[:reload]
         assert_equal 1, record.counter[:save]
       end
     end
 
-    context "with retry once" do
+    describe "with retry once" do
       let(:retries) { 5 }
 
-      test "saves and reloads 5 times" do
+      it "saves and reloads 5 times" do
         assert_equal 5, record.counter[:reload]
         assert_equal 1, record.counter[:save]
       end
     end
 
-    test "does not rescue other errors" do
+    it "does not rescue other errors" do
       assert_raises RuntimeError do
         record.retryable do
           raise "foo"

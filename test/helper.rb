@@ -6,12 +6,6 @@ require 'minitest/autorun'
 require 'retryable_record'
 
 class Spec < MiniTest::Spec
-  class << self
-    alias :context :describe
-    alias :test :it
-    alias :setup :before
-    alias :teardown :after
-  end
 end
 
 class FakeRecord
