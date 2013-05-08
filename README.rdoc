@@ -6,7 +6,7 @@ Retries an operation on an ActiveRecord until no StaleObjectError is being raise
 
 Gem[https://rubygems.org/gems/retryable_record] |
 Source[http://github.com/neopoly/retryable_record] |
-Documentation[http://rdoc.info/projects/neopoly/retryable_record]
+Documentation[http://rdoc.info/github/neopoly/retryable_record/master/frames]
 
 
 == Usage
