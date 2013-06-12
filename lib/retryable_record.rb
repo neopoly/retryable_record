@@ -16,6 +16,19 @@ require 'active_record/base'
 #     user.save!
 #   end
 #
+# == Example using attempts
+#
+#   class User < ActiveRecord::Base
+#     include RetryableRecord
+#   end
+#
+#   user = User.first
+#
+#   user.retryable(:attempts => 2) do
+#     user.username = "foo"
+#     user.save!
+#   end
+#
 module RetryableRecord
   # Retryable operations on an ActiveRecord +record+.
   #
