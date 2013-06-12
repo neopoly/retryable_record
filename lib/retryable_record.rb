@@ -16,6 +16,19 @@ require 'active_record/base'
 #     user.save!
 #   end
 #
+# == Example using attempts
+#
+#   class User < ActiveRecord::Base
+#     include RetryableRecord
+#   end
+#
+#   user = User.first
+#
+#   user.retryable(:attempts => 2) do
+#     user.username = "foo"
+#     user.save!
+#   end
+#
 module RetryableRecord
   # Retryable operations on an ActiveRecord +record+.
   #
@@ -26,16 +39,23 @@ module RetryableRecord
   #     user.save!
   #   end
   #
-  def retry(record)
-    yield
-  rescue ActiveRecord::StaleObjectError
-    record.reload
-    retry
+  def retry(record, opts = {})
+    attempts = opts[:attempts]
+    begin
+      yield
+    rescue ActiveRecord::StaleObjectError
+      unless attempts.nil?
+        raise unless attempts > 0
+        attempts -= 1
+      end
+      record.reload
+      retry
+    end
   end
   module_function :retry
 
   # Retries operations on an ActiveRecord.
-  def retryable(&block)
-    RetryableRecord.retry(self, &block)
+  def retryable(opts = {}, &block)
+    RetryableRecord.retry(self, opts, &block)
   end
 end
