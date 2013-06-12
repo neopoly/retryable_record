@@ -13,7 +13,7 @@ module Kernel
   #   end
   #
   # See RetryableRecord#retry
-  def RetryableRecord(record, &block)
-    RetryableRecord.retry(record, &block)
+  def RetryableRecord(record, opts = {}, &block)
+    RetryableRecord.retry(record, opts, &block)
   end
 end

@@ -26,16 +26,23 @@ module RetryableRecord
   #     user.save!
   #   end
   #
-  def retry(record)
-    yield
-  rescue ActiveRecord::StaleObjectError
-    record.reload
-    retry
+  def retry(record, opts = {})
+    attempts = opts[:attempts]
+    begin
+      yield
+    rescue ActiveRecord::StaleObjectError
+      unless attempts.nil?
+        raise unless attempts > 0
+        attempts -= 1
+      end
+      record.reload
+      retry
+    end
   end
   module_function :retry
 
   # Retries operations on an ActiveRecord.
-  def retryable(&block)
-    RetryableRecord.retry(self, &block)
+  def retryable(opts = {}, &block)
+    RetryableRecord.retry(self, opts, &block)
   end
 end
