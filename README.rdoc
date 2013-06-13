@@ -92,6 +92,10 @@ Inspired by
 * http://github.com/nfedyashev/retryable
 * http://vision-media.ca/resources/ruby/better-ruby-retryable-method (broken)
 
+=== Contributors
+
+Thanks to all contributions from awesome people[https://github.com/neopoly/retryable_record/contributors]!
+
 == TODO
 
 * Better example in README
