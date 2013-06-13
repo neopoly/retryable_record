@@ -1,13 +1,12 @@
 require 'rubygems'
 
-require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'retryable_record'
 
 require 'support/fake_record'
 
-class Spec < MiniTest::Spec
+class Spec < Minitest::Spec
   # Assert internal counter of the fake +record+.
   #
   # The following counters must be provided:
