@@ -46,11 +46,11 @@ You can use +retryable_record+ in 3 different ways:
     user.save!
   end
 
-== Options
+== Option +attempts+
 
-There is also an option to limit the number of retries that are attempted. You can use the attempts
-option. If no attempts option is specified, its assumed to be possibly infinte attempts until 
-an ActiveRecord::StaleObjectError is not raised. The attempts option works in all three forms.
+There is also an option +attempts+ to limit the number of retries.
+If no attempts option is specified, it's assumed to be possibly infinte attempts until 
+an ActiveRecord::StaleObjectError is not raised. The +attempts+ option works in all three forms.
 
 Here is the Module inclusion example with an attempts option used.
 
