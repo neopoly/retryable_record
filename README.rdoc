@@ -98,7 +98,8 @@ Thanks to all contributions from awesome people[https://github.com/neopoly/retry
 
 == TODO
 
-* Better example in README
+* Improve README example
+* Add Changelog!
 * Intergration test with ActiveRecord
 
 == Note on Patches/Pull Requests
