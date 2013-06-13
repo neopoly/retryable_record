@@ -1,30 +1,40 @@
 class FakeRecord
   include RetryableRecord
 
-  attr_accessor :counter
-
   def initialize(retries_left = 0)
     @counter = Hash.new(0)
     @counter[:retries_left] = retries_left
   end
 
   def reload
-    @counter[:reload] += 1
+    counter[:reloads] += 1
     self
   end
 
   def save!
-    @counter[:save] += 1
+    counter[:saves] += 1
   end
 
-  def retries_left?
-    @counter[:retries_left] > 0
+  def count_saves
+    counter[:saves]
+  end
+
+  def count_reloads
+    counter[:reloads]
   end
 
   def concurrent_modification!
     if retries_left?
-      @counter[:retries_left] -= 1
+      counter[:retries_left] -= 1
       raise ActiveRecord::StaleObjectError.new self, :save
     end
+  end
+
+  private
+
+  attr_reader :counter
+
+  def retries_left?
+    counter[:retries_left] > 0
   end
 end

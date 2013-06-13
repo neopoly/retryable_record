@@ -16,8 +16,7 @@ class RetryableRecordTest < Spec
       let(:retries) { 0 }
 
       it "saves and does not retry" do
-        assert_equal 0, record.counter[:reload]
-        assert_equal 1, record.counter[:save]
+        assert_record :reloads => 0, :saves => 1
       end
     end
 
@@ -25,8 +24,7 @@ class RetryableRecordTest < Spec
       let(:retries) { 5 }
 
       it "saves and reloads 5 times" do
-        assert_equal 5, record.counter[:reload]
-        assert_equal 1, record.counter[:save]
+        assert_record :reloads => 5, :saves => 1
       end
     end
 
@@ -37,8 +35,7 @@ class RetryableRecordTest < Spec
         end
       end
 
-      assert_equal 0, record.counter[:reload]
-      assert_equal 1, record.counter[:save]
+      assert_record :reloads => 0, :saves => 1
     end
   end
 
@@ -53,8 +50,7 @@ class RetryableRecordTest < Spec
     let(:retries) { 0 }
 
     it "saves and does not retry" do
-      assert_equal 0, record.counter[:reload]
-      assert_equal 1, record.counter[:save]
+      assert_record :reloads => 0, :saves => 1
     end
   end
 
@@ -69,8 +65,7 @@ class RetryableRecordTest < Spec
         end
       end
 
-      assert_equal 1, record.counter[:reload]
-      assert_equal 0, record.counter[:save]
+      assert_record :reloads => 1, :saves => 0
     end
   end
 end

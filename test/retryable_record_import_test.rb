@@ -15,9 +15,8 @@ class RetryableRecordImportTest < Spec
 
     let(:retries) { 0 }
 
-    it "saves and does not retry" do
-      assert_equal 0, record.counter[:reload]
-      assert_equal 1, record.counter[:save]
+    it "saves and does not retry/reload" do
+      assert_record :reloads => 0, :saves => 1
     end
   end
 
@@ -32,8 +31,7 @@ class RetryableRecordImportTest < Spec
         end
       end
 
-      assert_equal 1, record.counter[:reload]
-      assert_equal 0, record.counter[:save]
+      assert_record :reloads => 1, :saves => 0
     end
   end
 end
