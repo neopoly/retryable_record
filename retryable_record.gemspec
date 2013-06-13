@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "retryable_record"
   gem.require_paths = ["lib"]
   gem.version       = RetryableRecord::VERSION
+  gem.license       = 'MIT'
 
   gem.add_runtime_dependency 'activerecord', '>= 3'
 
