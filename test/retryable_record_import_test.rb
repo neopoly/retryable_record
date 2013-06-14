@@ -2,36 +2,32 @@ require 'helper'
 require 'retryable_record/import'
 
 class RetryableRecordImportTest < Spec
-  let(:retries) { 0 }
-  let(:record) { FakeRecord.new(retries) }
-
-  describe :RetryableRecord do
-    before do
-      RetryableRecord(record) do
-        record.concurrent_modification!
-        record.save!
-      end
+  # TODO de-duplicate with RetryableRecord#retryable delegation test
+  describe :retryable do
+    let(:record) { Class.new(FakeRecord) { include RetryableRecord }.new }
+    let(:expected) do
+      {
+        :record   => record,
+        :options  => { :attempts => 1 },
+        :return   => :return
+      }
     end
+    let(:actual) { {} }
 
-    let(:retries) { 0 }
-
-    it "saves and does not retry/reload" do
-      assert_record :reloads => 0, :saves => 1
-    end
-  end
-
-  describe :RetryableRecord_with_attempts do
-    let(:retries) { 2 }
-
-    it "retries `attempts` times, before re-raising" do
-      assert_raises ActiveRecord::StaleObjectError do
-        RetryableRecord(record, :attempts => 1) do
-          record.concurrent_modification!
-          record.save!
-        end
+    it "delegates to RetryableRecord.retry" do
+      method = proc do |record, options|
+        actual[:record]   = record
+        actual[:options]  = options
+        expected[:return]
       end
 
-      assert_record :reloads => 1, :saves => 0
+      RetryableRecord.stub :retry, method do
+        actual[:return] = RetryableRecord(record, expected[:options]) {}
+      end
+
+      assert_equal expected[:record], actual[:record]
+      assert_equal expected[:options], actual[:options]
+      assert_equal expected[:return], actual[:return]
     end
   end
 end

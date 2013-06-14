@@ -1,6 +1,4 @@
 class FakeRecord
-  include RetryableRecord
-
   def initialize(retries_left = 0)
     @counter = Hash.new(0)
     @counter[:retries_left] = retries_left
