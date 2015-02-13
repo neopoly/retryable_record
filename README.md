@@ -1,20 +1,24 @@
+[github]: https://github.com/neopoly/retryable_record
+[doc]: http://rubydoc.info/github/neopoly/retryable_record/master/file/README.md
+[gem]: https://rubygems.org/gems/retryable_record
+[travis]: https://travis-ci.org/neopoly/retryable_record
+[codeclimate]: https://codeclimate.com/github/neopoly/retryable_record
+[inchpages]: https://inch-ci.org/github/neopoly/retryable_record
+
 # retryable_record
+
+[![Travis](https://img.shields.io/travis/neopoly/retryable_record.svg?branch=master)][travis]
+[![Gem Version](https://img.shields.io/gem/v/retryable_record.svg)][gem]
+[![Code Climate](https://img.shields.io/codeclimate/github/neopoly/retryable_record.svg)][codeclimate]
+[![Test Coverage](https://codeclimate.com/github/neopoly/retryable_record/badges/coverage.svg)][codeclimate]
+[![Inline docs](https://inch-ci.org/github/neopoly/retryable_record.svg?branch=master&style=flat)][inchpages]
+
+[Gem][gem] |
+[Source][github] |
+[Documentation][doc]
 
 Retries an operation on an ActiveRecord until no StaleObjectError is being
 raised.
-
-[<img
-src="https://secure.travis-ci.org/neopoly/retryable_record.png?branch=master"
-alt="Build Status" />](http://travis-ci.org/neopoly/retryable_record) [<img
-src="https://badge.fury.io/rb/retryable_record.png" alt="Gem Version"
-/>](http://badge.fury.io/rb/retryable_record) [<img
-src="https://codeclimate.com/github/neopoly/retryable_record.png"
-/>](https://codeclimate.com/github/neopoly/retryable_record)
-
-[Gem](https://rubygems.org/gems/retryable_record) |
-[Source](http://github.com/neopoly/retryable_record) |
-[Documentation](http://rdoc.info/github/neopoly/retryable_record/master/frames
-)
 
 ## Usage
 
