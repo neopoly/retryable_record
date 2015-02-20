@@ -111,11 +111,9 @@ end
 ## Credits
 
 Inspired by
-*   http://blog.codefront.net/2008/01/14/retrying-code-blocks-in-ruby-on-excep
-    tions-whatever/
-*   http://github.com/nfedyashev/retryable
-*   http://vision-media.ca/resources/ruby/better-ruby-retryable-method
-    (broken)
+* http://blog.codefront.net/2008/01/14/retrying-code-blocks-in-ruby-on-exceptions-whatever/
+* http://github.com/nfedyashev/retryable
+* http://vision-media.ca/resources/ruby/better-ruby-retryable-method (broken)
 
 
 ### Contributors
@@ -125,19 +123,19 @@ Thanks to all contributions from awesome
 
 ## TODO
 
-*   Improve README example
-*   Add Changelog!
-*   Intergration test with ActiveRecord
+* Improve README example
+* Add Changelog!
+* Intergration test with ActiveRecord
 
 
 ## Note on Patches/Pull Requests
 
-*   Fork the project.
-*   Make your feature addition or bug fix.
-*   Add tests for it. This is important so I don't break it in a future
-    version unintentionally.
-*   Commit, do not mess with rakefile, version, or history. (if you want to
-    have your own version, that is fine but bump version in a commit by itself
-    I can ignore when I pull)
-*   Send me a pull request. Bonus points for topic branches.
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future
+  version unintentionally.
+* Commit, do not mess with rakefile, version, or history. (if you want to
+  have your own version, that is fine but bump version in a commit by itself
+  I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
 
