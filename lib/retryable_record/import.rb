@@ -1,5 +1,6 @@
 require 'retryable_record'
 
+# Extend Ruby's Kernel module
 module Kernel
   # Retryable operations on an ActiveRecord +record+.
   #
